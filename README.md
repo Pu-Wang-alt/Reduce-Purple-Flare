@@ -71,7 +71,7 @@ CAST-LUT/
 │
 ├── model_HSV.py             # 核心模型定义 (CAST, HSV_LUT_Module)
 ├── castHSV_train.py         # 脚本 1: 预训练 CAST 分词器
-├── train_test.py            # 脚本 2: 训练和测试完整的 CAST-LUT
+├── train.py                 # 脚本 2: 训练完整的 CAST-LUT
 ├── color_utils.py           # 移动端部署
 ├── requirements.txt         # 依赖列表
 └── README.md                # 本文件
@@ -93,7 +93,7 @@ python castHSV_train.py \
     --epochs 50 \
     --batch_size 32 \
     --use_mixed_precision
-```
+
 
 After training, copy the best model to the `pretrained` directory:
 
@@ -111,7 +111,7 @@ This unified script handles both training and testing using sub-commands.
 The script will load the pre-trained CAST weights from `pretrained/cast_hsv_best.pth`, freeze them, and train the LUT generator.
 
 ```bash
-python train_test.py train \
+python train.py \
     --train_input_dir ./data/train/input \
     --train_gt_dir ./data/train/gt \
     --val_input_dir ./data/val/input \
@@ -129,7 +129,7 @@ python train_test.py train \
 This will load the `best_model.pth` from the `checkpoints` directory and run evaluation on the test set.
 
 ```bash
-python train_test.py test \
+python test.py \
     --test_input_dir ./data/test/input \
     --test_gt_dir ./data/test/gt \
     --checkpoint_dir ./checkpoints \
@@ -146,14 +146,7 @@ Qualitative comparison with state-of-the-art methods on our PFSD dataset. Our me
   <img src="path/to/comparison.png" width="800" alt="Qualitative Results">
 </p>
 
-### Quantitative Results
 
-| Method | PSNR $\uparrow$ | SSIM $\uparrow$ | PSNR-F $\uparrow$ | HAE $\downarrow$ |
-| :--- | :---: | :---: | :---: | :---: |
-| 3DLUT | 30.34 | 0.96 | 23.87 | 19.12 |
-| NILUT | 32.31 | 0.95 | 24.86 | 4.87 |
-| HVI-CIDNet| 32.17 | 0.98 | 26.10 | 17.39 |
-| **CAST-LUT (Ours)** | **34.96** | **0.99** | **30.74** | **4.10** |
 
 ## 📜 Citation
 
