@@ -72,7 +72,6 @@ CAST-LUT/
 ├── model_HSV.py             # 核心模型定义 (CAST, HSV_LUT_Module)
 ├── castHSV_train.py         # 脚本 1: 预训练 CAST 分词器
 ├── train_test.py            # 脚本 2: 训练和测试完整的 CAST-LUT
-├── color_utils.py           # 移动端部署
 ├── requirements.txt         # 依赖列表
 └── README.md                # 本文件
 ```
