@@ -5,7 +5,7 @@
 Official PyTorch implementation for the AAAI 2026 paper: "CAST-LUT: Tokenizer-Guided HSV Look-Up Tables for Purple Flare Removal".
 
 <p align="center">
-  <img src="architecture.png" width="800" alt="CAST-LUT Architecture">
+  <img src="Architecture.png" width="800" alt="CAST-LUT Architecture">
 </p>
 
 ## 📖 Abstract
