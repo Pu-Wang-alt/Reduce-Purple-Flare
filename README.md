@@ -155,7 +155,15 @@ If you find our work useful, please consider citing our paper:
   year      = {2026}
 }
 ```
-
+```bibtex
+Our dataset:
+@misc{PuWang0_purple_flare_dataset,
+  title        = {purple_flare Dataset},
+  author       = {PuWang0},
+  howpublished = {\url{https://huggingface.co/datasets/PuWang0/purple_flare}},
+  year         = {2024} 
+}
+```
 ## 🙏 Acknowledgments
 
 This work was supported by the National Natural Science Foundation of China Project (No. 62172265) and Shandong Provincial Natural Science Foundation (ZR2025MS1025, ZR2025MS1036).
