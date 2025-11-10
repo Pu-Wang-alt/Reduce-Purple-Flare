@@ -90,9 +90,6 @@ python castHSV_train.py \
     --train_path ./data/imagenet/train \
     --val_path ./data/imagenet/val \
     --checkpoint_dir ./checkpoints_cast_hsv \
-    --epochs 50 \
-    --batch_size 32 \
-    --use_mixed_precision
 ```
 
 After training, copy the best model to the `pretrained` directory:
@@ -134,8 +131,6 @@ python train_test.py test \
     --test_gt_dir ./data/test/gt \
     --checkpoint_dir ./checkpoints \
     --output_dir ./test_results \
-    --crop_size 256 \
-    --stride 128
 ```
 
 ## 📊 Results
@@ -143,17 +138,9 @@ python train_test.py test \
 Qualitative comparison with state-of-the-art methods on our PFSD dataset. Our method (CAST-LUT) successfully removes the purple flare while preserving natural colors and details.
 
 <p align="center">
-  <img src="path/to/comparison.png" width="800" alt="Qualitative Results">
+  <img src="comparison.png" width="800" alt="Qualitative Results">
 </p>
 
-### Quantitative Results
-
-| Method | PSNR $\uparrow$ | SSIM $\uparrow$ | PSNR-F $\uparrow$ | HAE $\downarrow$ |
-| :--- | :---: | :---: | :---: | :---: |
-| 3DLUT | 30.34 | 0.96 | 23.87 | 19.12 |
-| NILUT | 32.31 | 0.95 | 24.86 | 4.87 |
-| HVI-CIDNet| 32.17 | 0.98 | 26.10 | 17.39 |
-| **CAST-LUT (Ours)** | **34.96** | **0.99** | **30.74** | **4.10** |
 
 ## 📜 Citation
 
