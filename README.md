@@ -10,7 +10,8 @@ Official PyTorch implementation for the AAAI 2026 paper: "CAST-LUT: Tokenizer-Gu
 
 ## 📖 Abstract
 
-Purple flare, a diffuse chromatic aberration artifact commonly found around highlight areas, severely degrades the tone transition and color of the image. Existing traditional methods are based on hand-crafted features, which lack flexibility and rely entirely on fixed priors, while the scarcity of paired training data critically hampers deep learning. To address this issue, we propose a novel network built upon decoupled HSV Look-Up Tables (LUTs). The method aims to simplify color correction by adjusting the Hue (H), Saturation (S), and Value (V) components independently... (Omitted for brevity) ...Extensive experiments demonstrate that our model not only significantly outperforms existing methods in visual effects but also achieves state-of-the-art performance on all quantitative metrics.
+Purple flare, a diffuse chromatic aberration artifact commonly found around highlight areas, severely degrades the tone transition and color of the image. Existing traditional methods are based on hand-crafted features, which lack flexibility and rely entirely on fixed priors,
+while the scarcity of paired training data critically hampers deep learning.  To address this issue, we propose a novel network built upon decoupled HSV Look-Up Tables (LUTs). The method aims to simplify color correction by adjusting the Hue (H), Saturation (S), and Value (V) components independently. This approach resolves the inherent color coupling problems in traditional methods. Our model adopts a two-stage architecture: First, a Chroma-Aware Spectral Tokenizer (CAST) converts the input image from RGB space to HSV space and independently encodes the Hue (H) and Value (V) channels into a set of semantic tokens describing the Purple flare status; second, the HSV-LUT module takes these tokens as input and dynamically generates independent correction curves (1D-LUTs) for the three channels H, S, and V. To effectively train and validate our model, we built the first large-scale purple flare dataset with diverse scenes. We also proposed new metrics and a loss function specifically designed for this task. Extensive experiments demonstrate that our model not only significantly outperforms existing methods in visual effects but also achieves state-of-the-art performance on all quantitative metrics.
 
 ## ✨ Key Features
 
@@ -47,7 +48,7 @@ Purple flare, a diffuse chromatic aberration artifact commonly found around high
 ```
 CAST-LUT/
 │
-├── data/                    # (你需要创建) 数据集根目录
+├── data/                    # 数据集根目录
 │   ├── imagenet/            # (CAST 预训练用)
 │   │   ├── train/
 │   │   └── val/
@@ -61,18 +62,18 @@ CAST-LUT/
 │       ├── input/
 │       └── gt/
 │
-├── pretrained/              # (你需要创建) 存放预训练模型
+├── pretrained/              # 存放预训练模型
 │   └── cast_hsv_best.pth    # CAST 预训练权重
 │
-├── checkpoints/             # (自动生成) 最终模型的检查点
-├── eval_results/            # (自动生成) 验证集的可视化结果
-├── test_results/            # (自动生成) 最终的测试结果
+├── checkpoints/             # 最终模型的检查点
+├── eval_results/            # 验证集的可视化结果
+├── test_results/            # 最终的测试结果
 │
 ├── model_HSV.py             # 核心模型定义 (CAST, HSV_LUT_Module)
 ├── castHSV_train.py         # 脚本 1: 预训练 CAST 分词器
 ├── train_test.py            # 脚本 2: 训练和测试完整的 CAST-LUT
-├── color_utils.py           # (你的依赖) 移动端部署的补丁
-├── requirements.txt         # (你需要创建) 依赖列表
+├── color_utils.py           # 移动端部署
+├── requirements.txt         # 依赖列表
 └── README.md                # 本文件
 ```
 
